@@ -82,7 +82,6 @@
             // label_textBox2
             // 
             this.label_textBox2.AutoSize = true;
-            this.label_textBox2.Enabled = false;
             this.label_textBox2.Location = new System.Drawing.Point(12, 129);
             this.label_textBox2.Name = "label_textBox2";
             this.label_textBox2.Size = new System.Drawing.Size(591, 13);

@@ -117,6 +117,20 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
+        /// Set today date on d or D press
+        /// </summary>
+        /// <param name="dateTimePicker"></param>
+        /// <param name="e"></param>
+        public static void TodayOnDKeyDown(DateTimePicker dateTimePicker, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D && e.Modifiers != Keys.Control)
+            {
+                dateTimePicker.Value = DateTime.Now.Date;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        /// <summary>
         /// Set first day of week on W press
         /// </summary>
         /// <param name="dateTimePicker"></param>
@@ -231,6 +245,7 @@ namespace DG.UI.Helpers
             DateTime now = DateTime.Now;
             NowOnNKeyDown((DateTimePicker)sender, e);
             TodayOnTKeyDown((DateTimePicker)sender, e);
+            TodayOnDKeyDown((DateTimePicker)sender, e);
             FirstDayOfWeekOnMKeyDown((DateTimePicker)sender, e, firstDayOfWeek, now);
             LastDayOfWeekOnMKeyDown((DateTimePicker)sender, e, firstDayOfWeek, now);
             FirstDayOfMonthOnMKeyDown((DateTimePicker)sender, e, now);
