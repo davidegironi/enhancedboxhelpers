@@ -3,7 +3,7 @@
 
 EnhancedBoxHelper is a **open source enhanced component helper for .NET WinForm**.
 
-It's adds some advanced functions to an existing ComboBox and TextBox by using the generetor helper.
+It's adds some advanced functions to an existing ComboBox, TextBox and DateTimePicker by using the generetor helper.
 
 
 ## Requirements

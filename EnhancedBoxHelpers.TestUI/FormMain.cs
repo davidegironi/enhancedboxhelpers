@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -33,6 +34,8 @@ namespace DG.UI.Helpers
         {
             Random rand = new Random();
 
+            EnhancedTextBoxHelper.infoiconColor = Color.Red;
+
             //generate random users
             for (int i = 0; i < 100; i++)
             {
@@ -46,7 +49,6 @@ namespace DG.UI.Helpers
             }
 
             //attach components
-
             EnhancedComboBoxHelper.AttachComboBox(
                 comboBox1,
                 new string[] { "Name", "Address" },
@@ -108,6 +110,23 @@ namespace DG.UI.Helpers
                 }).ToArray(),
                 EnhancedTextBoxHelperList.ViewMode.SelectOnDoubleClick,
                 () => MessageBox.Show(textBox2.Text.ToString()));
+
+            EnhancedDateTimePickerHelper.AttachDateTimePicker(
+                dateTimePicker1);
+
+            EnhancedDateTimePickerHelper.AttachDateTimePicker(
+                dateTimePicker2);
+            EnhancedDateTimePickerHelper.AttachDateTimePicker(
+                dateTimePicker3);
+            new EnhancedDateTimePickerHelper.FilterDateHelper(
+                dateTimePicker2,
+                dateTimePicker3,
+                null,
+                comboBox3,
+                365,
+                DayOfWeek.Monday,
+                EnhancedDateTimePickerHelper.FilterDateHelper.FromPickerDefaultValue.FirstDayOfWeek,
+                EnhancedDateTimePickerHelper.FilterDateHelper.ToPickerDefaultValue.FromPickerSameDay);
         }
 
         /// <summary>
@@ -127,14 +146,5 @@ namespace DG.UI.Helpers
             return builder.ToString();
         }
 
-        /// <summary>
-        /// Close click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button_close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

@@ -169,6 +169,9 @@ namespace DG.UI.Helpers
                 _columnHeaders = output.ToArray();
             }
 
+            //set filter search hanlder
+            advancedDataGridViewSearchToolBar_main.Search += new Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventHandler(advancedDataGridViewSearchToolBar_main_Search);
+
             //set binding source
             advancedDataGridView_main.DataSource = _bindingSource;
         }
@@ -236,6 +239,10 @@ namespace DG.UI.Helpers
 
             //set id visibility
             advancedDataGridView_main.Columns[0].Visible = false;
+
+            //set filter
+            advancedDataGridViewSearchToolBar_main.SetColumns(advancedDataGridView_main.Columns);
+
             _isBindingSourceLoading = false;
 
             //select current item
@@ -339,6 +346,43 @@ namespace DG.UI.Helpers
             advancedDataGridView_main.CleanSort();
             if (_columnHeaders.Length > 0)
                 advancedDataGridView_main.SortASC(advancedDataGridView_main.Columns[1]);
+        }
+
+        /// <summary>
+        /// Filter search handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void advancedDataGridViewSearchToolBar_main_Search(object sender, Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventArgs e)
+        {
+            int startColumn = 0;
+            int startRow = 0;
+            if (!e.FromBegin)
+            {
+                bool endcol = advancedDataGridView_main.CurrentCell.ColumnIndex + 1 >= advancedDataGridView_main.ColumnCount;
+                bool endrow = advancedDataGridView_main.CurrentCell.RowIndex + 1 >= advancedDataGridView_main.RowCount;
+
+                if (endcol && endrow)
+                {
+                    startColumn = advancedDataGridView_main.CurrentCell.ColumnIndex;
+                    startRow = advancedDataGridView_main.CurrentCell.RowIndex;
+                }
+                else
+                {
+                    startColumn = endcol ? 0 : advancedDataGridView_main.CurrentCell.ColumnIndex + 1;
+                    startRow = advancedDataGridView_main.CurrentCell.RowIndex + (endcol ? 1 : 0);
+                }
+            }
+            DataGridViewCell c = advancedDataGridView_main.FindCell(
+                e.ValueToSearch,
+                e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
+                startRow,
+                startColumn,
+                e.WholeWord,
+                e.CaseSensitive);
+
+            if (c != null)
+                advancedDataGridView_main.CurrentCell = c;
         }
 
         /// <summary>

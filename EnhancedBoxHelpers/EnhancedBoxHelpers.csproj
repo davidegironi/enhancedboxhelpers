@@ -51,6 +51,7 @@
     <Compile Include="EnhancedComboBoxHelperList.Designer.cs">
       <DependentUpon>EnhancedComboBoxHelperList.cs</DependentUpon>
     </Compile>
+    <Compile Include="EnhancedDataPickerHelper.cs" />
     <Compile Include="EnhancedTextBoxHelper.cs" />
     <Compile Include="EnhancedTextBoxHelperList.cs">
       <SubType>Form</SubType>
@@ -59,6 +60,14 @@
       <DependentUpon>EnhancedTextBoxHelperList.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EnhancedComboBoxHelperList.resx">
+      <DependentUpon>EnhancedComboBoxHelperList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EnhancedTextBoxHelperList.resx">
+      <DependentUpon>EnhancedTextBoxHelperList.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

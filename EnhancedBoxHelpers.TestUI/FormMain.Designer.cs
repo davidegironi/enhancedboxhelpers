@@ -36,7 +36,12 @@
             this.label_textBox1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button_close = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label_dateTimePicker1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label_comboBox1
@@ -77,6 +82,7 @@
             // label_textBox2
             // 
             this.label_textBox2.AutoSize = true;
+            this.label_textBox2.Enabled = false;
             this.label_textBox2.Location = new System.Drawing.Point(12, 129);
             this.label_textBox2.Name = "label_textBox2";
             this.label_textBox2.Size = new System.Drawing.Size(591, 13);
@@ -107,22 +113,77 @@
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 7;
             // 
-            // button_close
+            // dateTimePicker1
             // 
-            this.button_close.Location = new System.Drawing.Point(578, 170);
-            this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(75, 23);
-            this.button_close.TabIndex = 8;
-            this.button_close.Text = "Close";
-            this.button_close.UseVisualStyleBackColor = true;
-            this.button_close.Click += new System.EventHandler(this.button_close_Click);
+            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd HH:mm";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(15, 184);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker1.TabIndex = 8;
+            // 
+            // label_dateTimePicker1
+            // 
+            this.label_dateTimePicker1.AutoSize = true;
+            this.label_dateTimePicker1.Location = new System.Drawing.Point(12, 168);
+            this.label_dateTimePicker1.Name = "label_dateTimePicker1";
+            this.label_dateTimePicker1.Size = new System.Drawing.Size(168, 13);
+            this.label_dateTimePicker1.TabIndex = 10;
+            this.label_dateTimePicker1.Text = "DateTimePicker - EnableFastKeys";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 207);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(250, 13);
+            this.label1.TabIndex = 101;
+            this.label1.Text = "DateTimePicker - EnableFastKeys, FilterDateHelper";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(15, 223);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker2.TabIndex = 9;
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "yyyy/MM/dd";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker3.Location = new System.Drawing.Point(121, 223);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker3.TabIndex = 10;
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "1d",
+            "1w",
+            "1m",
+            "6m",
+            "1y"});
+            this.comboBox3.Location = new System.Drawing.Point(227, 222);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(40, 21);
+            this.comboBox3.TabIndex = 11;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 200);
-            this.Controls.Add(this.button_close);
+            this.ClientSize = new System.Drawing.Size(661, 253);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.dateTimePicker3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label_dateTimePicker1);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label_textBox2);
@@ -132,9 +193,9 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label_comboBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(677, 239);
+            this.MaximumSize = new System.Drawing.Size(677, 291);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(677, 239);
+            this.MinimumSize = new System.Drawing.Size(677, 291);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test Form";
@@ -154,7 +215,12 @@
         private System.Windows.Forms.Label label_textBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button_close;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label_dateTimePicker1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
 
