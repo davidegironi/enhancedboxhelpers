@@ -34,7 +34,8 @@ namespace DG.UI.Helpers
         {
             Random rand = new Random();
 
-            EnhancedTextBoxHelper.infoiconColor = Color.Red;
+            //sample override color settings
+            EnhancedTextBoxHelper.infoiconColor = Color.Green;
 
             //generate random users
             for (int i = 0; i < 100; i++)
