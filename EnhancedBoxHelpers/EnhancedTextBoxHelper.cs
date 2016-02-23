@@ -290,23 +290,26 @@ namespace DG.UI.Helpers
                     EnhancedTextBoxHelper.Items item = items.FirstOrDefault(r => r._value == textBox.Text);
                     if (item != null)
                     {
-                        string tooltipText = "";
-                        foreach (string value in item._values)
-                            tooltipText += value + " ";
-
-                        if (textBox.Visible && tooltip.Tag == null)
+                        if (item._values != null)
                         {
-                            if (!tooltipShown)
+                            string tooltipText = "";
+                            foreach (string value in item._values)
+                                tooltipText += value + " ";
+
+                            if (textBox.Visible && tooltip.Tag == null)
                             {
-                                tooltip.Show(tooltipText, textBox, textBox.Width / 2, textBox.Height / 2);
-                                tooltip.Tag = textBox;
-                                tooltipShown = true;
-                            }
-                            else
-                            {
-                                tooltip.Hide(textBox);
-                                tooltip.Tag = null;
-                                tooltipShown = false;
+                                if (!tooltipShown)
+                                {
+                                    tooltip.Show(tooltipText, textBox, textBox.Width / 2, textBox.Height / 2);
+                                    tooltip.Tag = textBox;
+                                    tooltipShown = true;
+                                }
+                                else
+                                {
+                                    tooltip.Hide(textBox);
+                                    tooltip.Tag = null;
+                                    tooltipShown = false;
+                                }
                             }
                         }
                     }

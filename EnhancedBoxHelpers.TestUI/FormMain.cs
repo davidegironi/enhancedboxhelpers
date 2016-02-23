@@ -59,10 +59,10 @@ namespace DG.UI.Helpers
                     _id = r.id,
                     _value = r.name,
                     _values = new string[]
-                                {
-                                    r.name,
-                                    r.address
-                                }
+                    {
+                        r.name,
+                        r.address
+                    }
                 }).ToArray());
 
             EnhancedComboBoxHelper.AttachComboBox(

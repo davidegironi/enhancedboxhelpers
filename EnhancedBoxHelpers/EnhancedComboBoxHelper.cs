@@ -342,23 +342,26 @@ namespace DG.UI.Helpers
                     EnhancedComboBoxHelper.Items item = items.FirstOrDefault(r => r._value == comboBox.Text);
                     if (item != null)
                     {
-                        string tooltipText = "";
-                        foreach (string value in item._values)
-                            tooltipText += value + " ";
-
-                        if (comboBox.Visible && tooltip.Tag == null)
+                        if (item._values != null)
                         {
-                            if (!tooltipShown)
+                            string tooltipText = "";
+                            foreach (string value in item._values)
+                                tooltipText += value + " ";
+
+                            if (comboBox.Visible && tooltip.Tag == null)
                             {
-                                tooltip.Show(tooltipText, comboBox, comboBox.Width / 2, comboBox.Height / 2);
-                                tooltip.Tag = comboBox;
-                                tooltipShown = true;
-                            }
-                            else
-                            {
-                                tooltip.Hide(comboBox);
-                                tooltip.Tag = null;
-                                tooltipShown = false;
+                                if (!tooltipShown)
+                                {
+                                    tooltip.Show(tooltipText, comboBox, comboBox.Width / 2, comboBox.Height / 2);
+                                    tooltip.Tag = comboBox;
+                                    tooltipShown = true;
+                                }
+                                else
+                                {
+                                    tooltip.Hide(comboBox);
+                                    tooltip.Tag = null;
+                                    tooltipShown = false;
+                                }
                             }
                         }
                     }
