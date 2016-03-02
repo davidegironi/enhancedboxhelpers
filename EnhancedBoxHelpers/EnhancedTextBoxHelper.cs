@@ -242,7 +242,7 @@ namespace DG.UI.Helpers
                 if (!_attached_MouseDown.ContainsKey(textBox))
                 {
                     _attached_MouseDown.Add(textBox, new MouseEventHandler((sender, e) => textBox_MouseDown(sender, e, columnHeaders, viewMode, postSetFunc)));
-                    if (drawInfoicon && textBox.Visible)
+                    if (drawInfoicon)
                         textBox.Parent.Paint += new PaintEventHandler((sender, e) => textBox_PaintInfoicon(sender, e, textBox));
                 }
                 else

@@ -294,7 +294,7 @@ namespace DG.UI.Helpers
                 if (!_attached_MouseDown.ContainsKey(comboBox))
                 {
                     _attached_MouseDown.Add(comboBox, new MouseEventHandler((sender, e) => comboBox_MouseDown(sender, e, columnHeaders, viewMode, postSetFunc)));
-                    if (drawInfoicon && comboBox.Visible)
+                    if (drawInfoicon)
                         comboBox.Parent.Paint += new PaintEventHandler((sender, e) => comboBox_PaintInfoicon(sender, e, comboBox));
                 }
                 else
