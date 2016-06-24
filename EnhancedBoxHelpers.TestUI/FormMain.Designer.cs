@@ -1,4 +1,4 @@
-﻿namespace DG.UI.Helpers
+﻿namespace DG.UI.Helpers.Test
 {
     partial class FormMain
     {

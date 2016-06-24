@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace DG.UI.Helpers
+namespace DG.UI.Helpers.Test
 {
     public partial class FormMain : Form
     {

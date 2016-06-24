@@ -7,7 +7,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace DG.UI.Helpers
+namespace DG.UI.Helpers.Test
 {
     static class Program
     {
