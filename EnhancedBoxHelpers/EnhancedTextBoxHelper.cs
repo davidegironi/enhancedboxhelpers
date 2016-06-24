@@ -192,6 +192,16 @@ namespace DG.UI.Helpers
         /// <param name="updateAutoComplete"></param>
         public static void UpdateItems(TextBox textBox, EnhancedTextBoxHelper.Items[] items, bool updateAutoComplete)
         {
+            //clean attached list
+            List<TextBox> textBoxToRemove = new List<TextBox>();
+            foreach (KeyValuePair<TextBox, EnhancedTextBoxHelper.Items[]> entry in _attached_TextBox)
+            {
+                if (entry.Key.IsDisposed)
+                    textBoxToRemove.Add(entry.Key);
+            }
+            foreach (TextBox key in textBoxToRemove)
+                _attached_TextBox.Remove(key);
+
             if (!_attached_TextBox.ContainsKey(textBox))
                 _attached_TextBox.Add(textBox, items);
             else
@@ -419,7 +429,8 @@ namespace DG.UI.Helpers
                         control = (Control)tooltip.Tag;
                         if (control != null)
                         {
-                            tooltip.Hide(control);
+                            if (!control.IsDisposed)
+                                tooltip.Hide(control);
                             tooltip.Tag = null;
                             tooltipShown = false;
                         }

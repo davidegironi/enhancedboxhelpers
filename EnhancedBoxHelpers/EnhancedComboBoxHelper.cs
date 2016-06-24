@@ -201,6 +201,16 @@ namespace DG.UI.Helpers
         /// <param name="updateDataSource"></param>
         public static void UpdateItems(ComboBox comboBox, EnhancedComboBoxHelper.Items[] items, bool updateDataSource)
         {
+            //clean attached list
+            List<ComboBox> comboBoxToRemove = new List<ComboBox>();
+            foreach (KeyValuePair<ComboBox, EnhancedComboBoxHelper.Items[]> entry in _attached_ComboBox)
+            {
+                if (entry.Key.IsDisposed)
+                    comboBoxToRemove.Add(entry.Key);
+            }
+            foreach (ComboBox key in comboBoxToRemove)
+                _attached_ComboBox.Remove(key);
+
             if (!_attached_ComboBox.ContainsKey(comboBox))
                 _attached_ComboBox.Add(comboBox, items);
             else
@@ -479,7 +489,8 @@ namespace DG.UI.Helpers
                         control = (Control)tooltip.Tag;
                         if (control != null)
                         {
-                            tooltip.Hide(control);
+                            if (!control.IsDisposed)
+                                tooltip.Hide(control);
                             tooltip.Tag = null;
                             tooltipShown = false;
                         }
