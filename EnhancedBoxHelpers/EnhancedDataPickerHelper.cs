@@ -527,31 +527,31 @@ namespace DG.UI.Helpers
 
                 try
                 {
-                    Match matchD = (new Regex(@"^(?<digit>\d)*d$")).Match(_intervalSelector.SelectedItem.ToString());
-                    Match matchW = (new Regex(@"^(?<digit>\d)*w$")).Match(_intervalSelector.SelectedItem.ToString());
-                    Match matchM = (new Regex(@"^(?<digit>\d)*m$")).Match(_intervalSelector.SelectedItem.ToString());
-                    Match matchY = (new Regex(@"^(?<digit>\d)*y$")).Match(_intervalSelector.SelectedItem.ToString());
-                    if (matchD.Success)
+                    Match matchd = (new Regex(@"^(?<digit>[+|-]?\d*)d$")).Match(_intervalSelector.SelectedItem.ToString());
+                    Match matchw = (new Regex(@"^(?<digit>[+|-]?\d*)w$")).Match(_intervalSelector.SelectedItem.ToString());
+                    Match matchm = (new Regex(@"^(?<digit>[+|-]?\d*)m$")).Match(_intervalSelector.SelectedItem.ToString());
+                    Match matchy = (new Regex(@"^(?<digit>[+|-]?\d*)y$")).Match(_intervalSelector.SelectedItem.ToString());
+                    if (matchd.Success)
                     {
-                        int days = Convert.ToInt32(matchD.Groups[1].Value);
+                        int days = Convert.ToInt32(matchd.Groups[1].Value);
                         _fromPicker.Value = _fromPicker.Value.Date;
                         _toPicker.Value = _fromPicker.Value.Date.AddDays(days).AddMilliseconds(-1);
                     }
-                    else if (matchW.Success)
+                    else if (matchw.Success)
                     {
-                        int weeks = Convert.ToInt32(matchW.Groups[1].Value);
+                        int weeks = Convert.ToInt32(matchw.Groups[1].Value);
                         _fromPicker.Value = _fromPicker.Value.Date;
                         _toPicker.Value = _fromPicker.Value.Date.AddDays(7 * weeks).AddMilliseconds(-1);
                     }
-                    else if (matchM.Success)
+                    else if (matchm.Success)
                     {
-                        int months = Convert.ToInt32(matchM.Groups[1].Value);
+                        int months = Convert.ToInt32(matchm.Groups[1].Value);
                         _fromPicker.Value = _fromPicker.Value.Date;
                         _toPicker.Value = _fromPicker.Value.Date.AddMonths(months).AddMilliseconds(-1);
                     }
-                    else if (matchY.Success)
+                    else if (matchy.Success)
                     {
-                        int years = Convert.ToInt32(matchY.Groups[1].Value);
+                        int years = Convert.ToInt32(matchy.Groups[1].Value);
                         _fromPicker.Value = _fromPicker.Value.Date;
                         _toPicker.Value = _fromPicker.Value.Date.AddYears(years).AddMilliseconds(-1);
                     }

@@ -162,7 +162,7 @@
             this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "1d",
+            "12d",
             "1w",
             "1m",
             "6m",
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(661, 253);
+            this.ClientSize = new System.Drawing.Size(661, 252);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label1);
