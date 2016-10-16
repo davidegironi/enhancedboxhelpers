@@ -13,7 +13,7 @@ It's adds some advanced functions to an existing ComboBox, TextBox and DateTimeP
 
 ## Requirements
 
-* Microsoft Windows with .NET framework 4.0 or more
+* Microsoft Windows with .NET framework 4.0 or later
 
 
 ## Development
