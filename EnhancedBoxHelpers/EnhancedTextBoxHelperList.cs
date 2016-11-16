@@ -355,6 +355,7 @@ namespace DG.UI.Helpers
         /// <param name="e"></param>
         private void advancedDataGridViewSearchToolBar_main_Search(object sender, Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventArgs e)
         {
+            bool restartsearch = true;
             int startColumn = 0;
             int startRow = 0;
             if (!e.FromBegin)
@@ -380,7 +381,14 @@ namespace DG.UI.Helpers
                 startColumn,
                 e.WholeWord,
                 e.CaseSensitive);
-
+            if (c == null && restartsearch)
+                c = advancedDataGridView_main.FindCell(
+                    e.ValueToSearch,
+                    e.ColumnToSearch != null ? e.ColumnToSearch.Name : null,
+                    0,
+                    0,
+                    e.WholeWord,
+                    e.CaseSensitive);
             if (c != null)
                 advancedDataGridView_main.CurrentCell = c;
         }
