@@ -204,7 +204,7 @@ namespace DG.UI.Helpers
                     comboBoxToRemove.Add(entry.Key);
             }
             foreach (ComboBox entry in comboBoxToRemove)
-                entry.DataSource = null; //remove the datasource
+                entry.DataSource = null;
             foreach (ComboBox entry in comboBoxToRemove)
                 _attached_ComboBox.Remove(entry);
             comboBoxToRemove = new List<ComboBox>();
