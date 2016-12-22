@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace DG.UI.Helpers
@@ -23,6 +24,11 @@ namespace DG.UI.Helpers
         /// List of controls attached
         /// </summary>
         private static IDictionary<ComboBox, EnhancedComboBoxHelper.Items[]> _attached_ComboBox = new Dictionary<ComboBox, EnhancedComboBoxHelper.Items[]>();
+
+        /// <summary>
+        /// List of controls with attached bindingsource
+        /// </summary>
+        private static IDictionary<ComboBox, BindingSource> _attached_BindingSource = new Dictionary<ComboBox, BindingSource>();
 
         /// <summary>
         /// List of controls with attached event
@@ -83,6 +89,11 @@ namespace DG.UI.Helpers
         /// <param name="postSetFunc"></param>
         public static void AttachComboBox(ComboBox comboBox, bool enableAutoCompleteOnEnter, bool enableDeselectOnEsc, bool enableShowListOnRightclick, bool enableTooltip, string[] columnHeaders, EnhancedComboBoxHelper.Items[] items, EnhancedComboBoxHelperList.ViewMode viewMode, Action postSetFunc)
         {
+            CleanLists();
+
+            if (comboBox == null)
+                return;
+
             UpdateItems(comboBox, items, true);
 
             if (enableAutoCompleteOnEnter)
@@ -178,18 +189,103 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
+        /// Remove disposed components from list
+        /// </summary>
+        public static void CleanLists()
+        {
+            List<ComboBox> comboBoxToRemove = new List<ComboBox>();
+            List<Control> controlToRemove = new List<Control>();
+
+            //clean attached list
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (KeyValuePair<ComboBox, EnhancedComboBoxHelper.Items[]> entry in _attached_ComboBox)
+            {
+                if (entry.Key.IsDisposed)
+                    comboBoxToRemove.Add(entry.Key);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                entry.DataSource = null; //remove the datasource
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_ComboBox.Remove(entry);
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (KeyValuePair<ComboBox, BindingSource> entry in _attached_BindingSource)
+            {
+                if (entry.Key.IsDisposed)
+                    comboBoxToRemove.Add(entry.Key);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_BindingSource.Remove(entry);
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (ComboBox entry in _attached_KeyPress)
+            {
+                if (entry.IsDisposed)
+                    comboBoxToRemove.Add(entry);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_KeyPress.Remove(entry);
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (ComboBox entry in _attached_KeyDown)
+            {
+                if (entry.IsDisposed)
+                    comboBoxToRemove.Add(entry);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_KeyDown.Remove(entry);
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (KeyValuePair<ComboBox, MouseEventHandler> entry in _attached_MouseDown)
+            {
+                if (entry.Key.IsDisposed)
+                    comboBoxToRemove.Add(entry.Key);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_MouseDown.Remove(entry);
+            comboBoxToRemove = new List<ComboBox>();
+            foreach (ComboBox entry in _attached_MouseHover)
+            {
+                if (entry.IsDisposed)
+                    comboBoxToRemove.Add(entry);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+                _attached_MouseHover.Remove(entry);
+            controlToRemove = new List<Control>();
+            foreach (Control entry in _attached_parentMouseMove)
+            {
+                if (entry.IsDisposed)
+                    controlToRemove.Add(entry);
+            }
+            foreach (Control entry in controlToRemove)
+                _attached_parentMouseMove.Remove(entry);
+        }
+
+        /// <summary>
         /// Set/Updat DataSource on combobox
         /// </summary>
         /// <param name="comboBox"></param>
         /// <param name="items"></param>
-        public static void UpdateDataSource(ComboBox comboBox, EnhancedComboBoxHelper.Items[] items)
+        /// <param name="resetSelectedIndex"></param>
+        public static void UpdateDataSource(ComboBox comboBox, EnhancedComboBoxHelper.Items[] items, bool resetSelectedIndex)
         {
+            if (comboBox == null)
+                return;
+
             if (comboBox != null && items != null)
             {
-                comboBox.DataSource = items;
-                comboBox.ValueMember = "_id";
-                comboBox.DisplayMember = "_value";
-                comboBox.SelectedIndex = -1;
+                if (_attached_BindingSource.ContainsKey(comboBox))
+                {
+                    if (_attached_BindingSource[comboBox] != null)
+                    {
+                        if (comboBox.DataSource != _attached_BindingSource[comboBox])
+                        {
+                            comboBox.DataSource = _attached_BindingSource[comboBox];
+                        }
+                    }
+                }
+                if (comboBox.ValueMember != "_id")
+                    comboBox.ValueMember = "_id";
+                if (comboBox.DisplayMember != "_value")
+                    comboBox.DisplayMember = "_value";
+                if (resetSelectedIndex)
+                    comboBox.SelectedIndex = -1;
             }
         }
 
@@ -201,23 +297,27 @@ namespace DG.UI.Helpers
         /// <param name="updateDataSource"></param>
         public static void UpdateItems(ComboBox comboBox, EnhancedComboBoxHelper.Items[] items, bool updateDataSource)
         {
-            //clean attached list
-            List<ComboBox> comboBoxToRemove = new List<ComboBox>();
-            foreach (KeyValuePair<ComboBox, EnhancedComboBoxHelper.Items[]> entry in _attached_ComboBox)
-            {
-                if (entry.Key.IsDisposed)
-                    comboBoxToRemove.Add(entry.Key);
-            }
-            foreach (ComboBox key in comboBoxToRemove)
-                _attached_ComboBox.Remove(key);
-
             if (!_attached_ComboBox.ContainsKey(comboBox))
                 _attached_ComboBox.Add(comboBox, items);
             else
                 _attached_ComboBox[comboBox] = items;
 
+            if (!_attached_BindingSource.ContainsKey(comboBox))
+            {
+                BindingSource bindingSource = new BindingSource();
+                bindingSource.DataSource = items;
+                _attached_BindingSource.Add(comboBox, bindingSource);
+            }
+            else
+            {
+                if (new JavaScriptSerializer().Serialize(_attached_BindingSource[comboBox].DataSource) != new JavaScriptSerializer().Serialize(items))
+                {
+                    _attached_BindingSource[comboBox].DataSource = items;
+                }
+            }
+
             if (updateDataSource)
-                UpdateDataSource(comboBox, items);
+                UpdateDataSource(comboBox, items, true);
         }
 
         /// <summary>
@@ -304,7 +404,7 @@ namespace DG.UI.Helpers
                 if (!_attached_MouseDown.ContainsKey(comboBox))
                 {
                     _attached_MouseDown.Add(comboBox, new MouseEventHandler((sender, e) => comboBox_MouseDown(sender, e, columnHeaders, viewMode, postSetFunc)));
-                    if (drawInfoicon)
+                    if (drawInfoicon && comboBox.Parent != null)
                         comboBox.Parent.Paint += new PaintEventHandler((sender, e) => comboBox_PaintInfoicon(sender, e, comboBox));
                 }
                 else
@@ -324,10 +424,13 @@ namespace DG.UI.Helpers
         {
             if (comboBox != null)
             {
-                if (!_attached_parentMouseMove.Contains(comboBox.Parent))
+                if (comboBox.Parent != null)
                 {
-                    _attached_parentMouseMove.Add(comboBox.Parent);
-                    comboBox.Parent.MouseMove += parentControl_MouseMove;
+                    if (!_attached_parentMouseMove.Contains(comboBox.Parent))
+                    {
+                        _attached_parentMouseMove.Add(comboBox.Parent);
+                        comboBox.Parent.MouseMove += parentControl_MouseMove;
+                    }
                 }
 
                 if (!_attached_MouseHover.Contains(comboBox))
@@ -510,11 +613,14 @@ namespace DG.UI.Helpers
             if (!comboBox.Visible)
                 return;
 
-            using (Graphics g = comboBox.Parent.CreateGraphics())
+            if (comboBox.Parent != null)
             {
-                Pen pen = new Pen(infoiconColor, 1);
-                g.DrawLine(pen, comboBox.Location.X + comboBox.Width - 10, comboBox.Location.Y - 1, comboBox.Location.X + comboBox.Width, comboBox.Location.Y - 1);
-                g.DrawLine(pen, comboBox.Location.X + comboBox.Width, comboBox.Location.Y, comboBox.Location.X + comboBox.Width, comboBox.Location.Y + 10);
+                using (Graphics g = comboBox.Parent.CreateGraphics())
+                {
+                    Pen pen = new Pen(infoiconColor, 1);
+                    g.DrawLine(pen, comboBox.Location.X + comboBox.Width - 10, comboBox.Location.Y - 1, comboBox.Location.X + comboBox.Width, comboBox.Location.Y - 1);
+                    g.DrawLine(pen, comboBox.Location.X + comboBox.Width, comboBox.Location.Y, comboBox.Location.X + comboBox.Width, comboBox.Location.Y + 10);
+                }
             }
         }
 

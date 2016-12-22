@@ -77,6 +77,11 @@ namespace DG.UI.Helpers
         /// <param name="postSetFunc"></param>
         public static void AttachTextBox(TextBox textBox, bool enableDeselectOnEsc, bool enableShowListOnRightclick, bool enableTooltip, string[] columnHeaders, EnhancedTextBoxHelper.Items[] items, EnhancedTextBoxHelperList.ViewMode viewMode, Action postSetFunc)
         {
+            CleanLists();
+
+            if (textBox == null)
+                return;
+
             UpdateItems(textBox, items, true);
 
             if (enableDeselectOnEsc)
@@ -167,6 +172,57 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
+        /// Remove disposed components from list
+        /// </summary>
+        public static void CleanLists()
+        {
+            List<TextBox> textBoxToRemove = new List<TextBox>();
+            List<Control> controlToRemove = new List<Control>();
+
+            //clean attached list
+            textBoxToRemove = new List<TextBox>();
+            foreach (KeyValuePair<TextBox, EnhancedTextBoxHelper.Items[]> entry in _attached_TextBox)
+            {
+                if (entry.Key.IsDisposed)
+                    textBoxToRemove.Add(entry.Key);
+            }
+            foreach (TextBox entry in textBoxToRemove)
+                _attached_TextBox.Remove(entry);
+            textBoxToRemove = new List<TextBox>();
+            foreach (TextBox entry in _attached_KeyDown)
+            {
+                if (entry.IsDisposed)
+                    textBoxToRemove.Add(entry);
+            }
+            foreach (TextBox entry in textBoxToRemove)
+                _attached_KeyDown.Remove(entry);
+            textBoxToRemove = new List<TextBox>();
+            foreach (KeyValuePair<TextBox, MouseEventHandler> entry in _attached_MouseDown)
+            {
+                if (entry.Key.IsDisposed)
+                    textBoxToRemove.Add(entry.Key);
+            }
+            foreach (TextBox entry in textBoxToRemove)
+                _attached_MouseDown.Remove(entry);
+            textBoxToRemove = new List<TextBox>();
+            foreach (TextBox entry in _attached_MouseHover)
+            {
+                if (entry.IsDisposed)
+                    textBoxToRemove.Add(entry);
+            }
+            foreach (TextBox entry in textBoxToRemove)
+                _attached_MouseHover.Remove(entry);
+            textBoxToRemove = new List<TextBox>();
+            foreach (Control entry in _attached_parentMouseMove)
+            {
+                if (entry.IsDisposed)
+                    controlToRemove.Add(entry);
+            }
+            foreach (Control entry in controlToRemove)
+                _attached_parentMouseMove.Remove(entry);
+        }
+
+        /// <summary>
         /// Set/Update AutoComplete on textbox
         /// </summary>
         /// <param name="textBox"></param>
@@ -192,6 +248,9 @@ namespace DG.UI.Helpers
         /// <param name="updateAutoComplete"></param>
         public static void UpdateItems(TextBox textBox, EnhancedTextBoxHelper.Items[] items, bool updateAutoComplete)
         {
+            if (textBox == null)
+                return;
+
             //clean attached list
             List<TextBox> textBoxToRemove = new List<TextBox>();
             foreach (KeyValuePair<TextBox, EnhancedTextBoxHelper.Items[]> entry in _attached_TextBox)
@@ -252,7 +311,7 @@ namespace DG.UI.Helpers
                 if (!_attached_MouseDown.ContainsKey(textBox))
                 {
                     _attached_MouseDown.Add(textBox, new MouseEventHandler((sender, e) => textBox_MouseDown(sender, e, columnHeaders, viewMode, postSetFunc)));
-                    if (drawInfoicon)
+                    if (drawInfoicon && textBox.Parent != null)
                         textBox.Parent.Paint += new PaintEventHandler((sender, e) => textBox_PaintInfoicon(sender, e, textBox));
                 }
                 else
@@ -272,10 +331,13 @@ namespace DG.UI.Helpers
         {
             if (textBox != null)
             {
-                if (!_attached_parentMouseMove.Contains(textBox.Parent))
+                if (textBox.Parent != null)
                 {
-                    _attached_parentMouseMove.Add(textBox.Parent);
-                    textBox.Parent.MouseMove += parentControl_MouseMove;
+                    if (!_attached_parentMouseMove.Contains(textBox.Parent))
+                    {
+                        _attached_parentMouseMove.Add(textBox.Parent);
+                        textBox.Parent.MouseMove += parentControl_MouseMove;
+                    }
                 }
 
                 if (!_attached_MouseHover.Contains(textBox))
@@ -450,11 +512,14 @@ namespace DG.UI.Helpers
             if (!textBox.Visible)
                 return;
 
-            using (Graphics g = textBox.Parent.CreateGraphics())
+            if (textBox.Parent != null)
             {
-                Pen pen = new Pen(infoiconColor, 1);
-                g.DrawLine(pen, textBox.Location.X + textBox.Width - 10, textBox.Location.Y - 1, textBox.Location.X + textBox.Width, textBox.Location.Y - 1);
-                g.DrawLine(pen, textBox.Location.X + textBox.Width, textBox.Location.Y, textBox.Location.X + textBox.Width, textBox.Location.Y + 10);
+                using (Graphics g = textBox.Parent.CreateGraphics())
+                {
+                    Pen pen = new Pen(infoiconColor, 1);
+                    g.DrawLine(pen, textBox.Location.X + textBox.Width - 10, textBox.Location.Y - 1, textBox.Location.X + textBox.Width, textBox.Location.Y - 1);
+                    g.DrawLine(pen, textBox.Location.X + textBox.Width, textBox.Location.Y, textBox.Location.X + textBox.Width, textBox.Location.Y + 10);
+                }
             }
         }
 

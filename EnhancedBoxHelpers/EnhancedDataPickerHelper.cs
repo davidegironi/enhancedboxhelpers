@@ -19,23 +19,6 @@ namespace DG.UI.Helpers
         private static IList<DateTimePicker> _attachedList_KeyDown = new List<DateTimePicker>();
 
         /// <summary>
-        /// Attach keydown event
-        /// </summary>
-        /// <param name="dateTimePicker"></param>
-        /// <param name="firstDayOfWeek"></param>
-        public static void AttachKeyDown(DateTimePicker dateTimePicker, DayOfWeek firstDayOfWeek)
-        {
-            if (dateTimePicker != null)
-            {
-                if (!_attachedList_KeyDown.Contains(dateTimePicker))
-                {
-                    _attachedList_KeyDown.Add(dateTimePicker);
-                    dateTimePicker.KeyDown += (sender, e) => dateTimePicker_KeyDown(sender, e, firstDayOfWeek);
-                }
-            }
-        }
-
-        /// <summary>
         /// Attach the helper to a textbox
         /// </summary>
         /// <param name="dateTimePicker"></param>
@@ -44,6 +27,8 @@ namespace DG.UI.Helpers
         /// <param name="enableFastKeys"></param>
         public static void AttachDateTimePicker(DateTimePicker dateTimePicker, string customFormat, DayOfWeek firstDayOfWeek, bool enableFastKeys)
         {
+            CleanLists();
+
             //enable fast key
             if (enableFastKeys)
             {
@@ -86,6 +71,41 @@ namespace DG.UI.Helpers
         public static void AttachDateTimePicker(DateTimePicker dateTimePicker)
         {
             AttachDateTimePicker(dateTimePicker, null, DayOfWeek.Monday, true);
+        }
+
+        /// <summary>
+        /// Remove disposed components from list
+        /// </summary>
+        public static void CleanLists()
+        {
+            List<DateTimePicker> entryToRemove = new List<DateTimePicker>();
+
+            //clean attached list
+            entryToRemove = new List<DateTimePicker>();
+            foreach (DateTimePicker entry in _attachedList_KeyDown)
+            {
+                if (entry.IsDisposed)
+                    entryToRemove.Add(entry);
+            }
+            foreach (DateTimePicker entry in entryToRemove)
+                _attachedList_KeyDown.Remove(entry);
+        }
+
+        /// <summary>
+        /// Attach keydown event
+        /// </summary>
+        /// <param name="dateTimePicker"></param>
+        /// <param name="firstDayOfWeek"></param>
+        public static void AttachKeyDown(DateTimePicker dateTimePicker, DayOfWeek firstDayOfWeek)
+        {
+            if (dateTimePicker != null)
+            {
+                if (!_attachedList_KeyDown.Contains(dateTimePicker))
+                {
+                    _attachedList_KeyDown.Add(dateTimePicker);
+                    dateTimePicker.KeyDown += (sender, e) => dateTimePicker_KeyDown(sender, e, firstDayOfWeek);
+                }
+            }
         }
 
         /// <summary>

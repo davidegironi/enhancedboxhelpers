@@ -146,6 +146,5 @@ namespace DG.UI.Helpers.Test
             }
             return builder.ToString();
         }
-
     }
 }
