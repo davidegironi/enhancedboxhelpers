@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DG.EnhancedBoxHelpers</id>
+    <version>$version$</version>
+    <title>Enhanced BoxHelpers</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/GPL-3.0</licenseUrl>
+    <projectUrl>https://github.com/davidegironi/enhancedboxhelpers</projectUrl>
+    <iconUrl>https://github.com/davidegironi/enhancedboxhelpers/raw/master/EnhancedBoxHelpers/Resources/Images/EnhancedBoxHelpers_logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
+    <tags>TextBox, DataPicker, ComboBox, WinForm, Advanced, Enhanced</tags>
+  </metadata>
+  <files>
+    <file src="..\License\LICENSE" target="LICENSE" /> 
+  </files>
+</package>
