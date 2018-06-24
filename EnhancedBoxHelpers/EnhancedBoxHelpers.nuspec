@@ -13,6 +13,9 @@
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <tags>TextBox, DataPicker, ComboBox, WinForm, Advanced, Enhanced</tags>
+    <dependencies>
+      <dependency id="DG.AdvancedDataGridView" version="1.0.21823.21" />
+    </dependencies>
   </metadata>
   <files>
     <file src="..\License\LICENSE" target="LICENSE" /> 
