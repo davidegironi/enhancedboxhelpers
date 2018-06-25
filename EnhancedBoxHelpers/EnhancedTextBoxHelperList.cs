@@ -262,26 +262,6 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
-        /// Filter handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void advancedDataGridView_main_FilterStringChanged(object sender, EventArgs e)
-        {
-            _bindingSource.Filter = advancedDataGridView_main.FilterString;
-        }
-
-        /// <summary>
-        /// Sorter handler
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void advancedDataGridView_main_SortStringChanged(object sender, EventArgs e)
-        {
-            _bindingSource.Sort = advancedDataGridView_main.SortString;
-        }
-
-        /// <summary>
         /// Current index changed
         /// </summary>
         /// <param name="sender"></param>

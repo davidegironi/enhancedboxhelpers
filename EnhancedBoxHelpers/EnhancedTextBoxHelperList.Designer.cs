@@ -83,8 +83,6 @@
             this.advancedDataGridView_main.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.advancedDataGridView_main.Size = new System.Drawing.Size(534, 214);
             this.advancedDataGridView_main.TabIndex = 2;
-            this.advancedDataGridView_main.SortStringChanged += new System.EventHandler(this.advancedDataGridView_main_SortStringChanged);
-            this.advancedDataGridView_main.FilterStringChanged += new System.EventHandler(this.advancedDataGridView_main_FilterStringChanged);
             this.advancedDataGridView_main.DoubleClick += new System.EventHandler(this.advancedDataGridView_main_DoubleClick);
             // 
             // panel_filters
