@@ -6,8 +6,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
@@ -202,6 +204,26 @@ namespace DG.UI.Helpers
             {
                 if (entry.Key.IsDisposed)
                     comboBoxToRemove.Add(entry.Key);
+            }
+            foreach (ComboBox entry in comboBoxToRemove)
+            {
+                EventHandlerList events = typeof(ComboBox).GetProperty("Events", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(entry, null) as EventHandlerList;
+                object current = events.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField)[0].GetValue(events);
+                List<Delegate> delegates = new List<Delegate>();
+                while (current != null)
+                {
+                    delegates.Add((Delegate)(current.GetType().GetField("handler", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current)));
+                    current = current.GetType().GetField("next", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current);
+                }
+                EventInfo[] eventinfol = typeof(ComboBox).GetEvents();
+                foreach (Type eventinfotype in eventinfol.Select(r => r.EventHandlerType).Distinct())
+                {
+                    foreach (Delegate d in delegates.Where(r => r != null && r.GetType() == eventinfotype))
+                    {
+                        foreach (EventInfo eventinfo in eventinfol.Where(r => r.EventHandlerType == eventinfotype))
+                            eventinfo.RemoveEventHandler(entry, d);
+                    }
+                }
             }
             foreach (ComboBox entry in comboBoxToRemove)
                 entry.DataSource = null;
