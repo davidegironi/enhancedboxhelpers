@@ -38,10 +38,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label_dateTimePicker1 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label_dateTimePicker2 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label_dateTimePicker4 = new System.Windows.Forms.Label();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.label_dateTimePicker5 = new System.Windows.Forms.Label();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.label_dateTimePicker5utchelper = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label_comboBox1
@@ -130,14 +135,14 @@
             this.label_dateTimePicker1.TabIndex = 10;
             this.label_dateTimePicker1.Text = "DateTimePicker - EnableFastKeys";
             // 
-            // label1
+            // label_dateTimePicker2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 207);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 13);
-            this.label1.TabIndex = 101;
-            this.label1.Text = "DateTimePicker - EnableFastKeys, FilterDateHelper";
+            this.label_dateTimePicker2.AutoSize = true;
+            this.label_dateTimePicker2.Location = new System.Drawing.Point(12, 207);
+            this.label_dateTimePicker2.Name = "label_dateTimePicker2";
+            this.label_dateTimePicker2.Size = new System.Drawing.Size(250, 13);
+            this.label_dateTimePicker2.TabIndex = 101;
+            this.label_dateTimePicker2.Text = "DateTimePicker - EnableFastKeys, FilterDateHelper";
             // 
             // dateTimePicker2
             // 
@@ -172,14 +177,64 @@
             this.comboBox3.Size = new System.Drawing.Size(40, 21);
             this.comboBox3.TabIndex = 11;
             // 
+            // label_dateTimePicker4
+            // 
+            this.label_dateTimePicker4.AutoSize = true;
+            this.label_dateTimePicker4.Location = new System.Drawing.Point(305, 168);
+            this.label_dateTimePicker4.Name = "label_dateTimePicker4";
+            this.label_dateTimePicker4.Size = new System.Drawing.Size(114, 13);
+            this.label_dateTimePicker4.TabIndex = 103;
+            this.label_dateTimePicker4.Text = "DateTimePicker - UTC";
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "yyyy/MM/dd HH:mm";
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker4.Location = new System.Drawing.Point(308, 184);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker4.TabIndex = 102;
+            // 
+            // label_dateTimePicker5
+            // 
+            this.label_dateTimePicker5.AutoSize = true;
+            this.label_dateTimePicker5.Location = new System.Drawing.Point(305, 207);
+            this.label_dateTimePicker5.Name = "label_dateTimePicker5";
+            this.label_dateTimePicker5.Size = new System.Drawing.Size(161, 13);
+            this.label_dateTimePicker5.TabIndex = 105;
+            this.label_dateTimePicker5.Text = "DateTimePicker - UTC with label";
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.CustomFormat = "yyyy/MM/dd HH:mm";
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker5.Location = new System.Drawing.Point(308, 223);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(130, 20);
+            this.dateTimePicker5.TabIndex = 104;
+            // 
+            // label_dateTimePicker5utchelper
+            // 
+            this.label_dateTimePicker5utchelper.AutoSize = true;
+            this.label_dateTimePicker5utchelper.Location = new System.Drawing.Point(444, 228);
+            this.label_dateTimePicker5utchelper.Name = "label_dateTimePicker5utchelper";
+            this.label_dateTimePicker5utchelper.Size = new System.Drawing.Size(104, 13);
+            this.label_dateTimePicker5utchelper.TabIndex = 106;
+            this.label_dateTimePicker5utchelper.Text = "UTC conversion text";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 252);
+            this.Controls.Add(this.label_dateTimePicker5utchelper);
+            this.Controls.Add(this.label_dateTimePicker5);
+            this.Controls.Add(this.dateTimePicker5);
+            this.Controls.Add(this.label_dateTimePicker4);
+            this.Controls.Add(this.dateTimePicker4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.dateTimePicker3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_dateTimePicker2);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label_dateTimePicker1);
             this.Controls.Add(this.dateTimePicker1);
@@ -216,10 +271,15 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label_dateTimePicker1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label_dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label_dateTimePicker4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
+        private System.Windows.Forms.Label label_dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.Label label_dateTimePicker5utchelper;
     }
 }
 

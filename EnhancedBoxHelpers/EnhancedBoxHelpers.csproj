@@ -54,7 +54,8 @@
     <Compile Include="EnhancedComboBoxHelperList.Designer.cs">
       <DependentUpon>EnhancedComboBoxHelperList.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnhancedDataPickerHelper.cs" />
+    <Compile Include="EnhancedDateTimePickerHelper.cs" />
+    <Compile Include="EnhancedDateTimePickerUtcHelper.cs" />
     <Compile Include="EnhancedTextBoxHelper.cs" />
     <Compile Include="EnhancedTextBoxHelperList.cs">
       <SubType>Form</SubType>

@@ -128,6 +128,12 @@ namespace DG.UI.Helpers.Test
                 DayOfWeek.Monday,
                 EnhancedDateTimePickerHelper.FilterDateHelper.FromPickerDefaultValue.FirstDayOfWeek,
                 EnhancedDateTimePickerHelper.FilterDateHelper.ToPickerDefaultValue.FromPickerSameDay);
+
+            EnhancedDateTimePickerUtcHelper.AttachDateTimePicker(
+                dateTimePicker4);
+
+            EnhancedDateTimePickerUtcHelper.AttachDateTimePicker(
+                dateTimePicker5, label_dateTimePicker5utchelper);
         }
 
         /// <summary>

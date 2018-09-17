@@ -16,10 +16,10 @@ namespace DG.UI.Helpers
         /// <summary>
         /// List of controls with attached event
         /// </summary>
-        private static IList<DateTimePicker> _attachedList_KeyDown = new List<DateTimePicker>();
+        private static IList<DateTimePicker> _attached_KeyDown = new List<DateTimePicker>();
 
         /// <summary>
-        /// Attach the helper to a textbox
+        /// Attach the helper to a datetimepicker
         /// </summary>
         /// <param name="dateTimePicker"></param>
         /// <param name="customFormat"></param>
@@ -44,7 +44,7 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
-        /// Attach the helper to a textbox
+        /// Attach the helper to a datetimepicker
         /// </summary>
         /// <param name="dateTimePicker"></param>
         /// <param name="customFormat"></param>
@@ -55,7 +55,7 @@ namespace DG.UI.Helpers
 
         }
         /// <summary>
-        /// Attach the helper to a textbox
+        /// Attach the helper to a datetimepicker
         /// </summary>
         /// <param name="dateTimePicker"></param>
         /// <param name="customFormat"></param>
@@ -65,7 +65,7 @@ namespace DG.UI.Helpers
         }
 
         /// <summary>
-        /// Attach the helper to a textbox
+        /// Attach the helper to a datetimepicker
         /// </summary>
         /// <param name="dateTimePicker"></param>
         public static void AttachDateTimePicker(DateTimePicker dateTimePicker)
@@ -78,17 +78,17 @@ namespace DG.UI.Helpers
         /// </summary>
         public static void CleanLists()
         {
-            List<DateTimePicker> entryToRemove = new List<DateTimePicker>();
+            List<DateTimePicker> dateTimePickerToRemove = new List<DateTimePicker>();
 
             //clean attached list
-            entryToRemove = new List<DateTimePicker>();
-            foreach (DateTimePicker entry in _attachedList_KeyDown)
+            dateTimePickerToRemove = new List<DateTimePicker>();
+            foreach (DateTimePicker entry in _attached_KeyDown)
             {
                 if (entry.IsDisposed)
-                    entryToRemove.Add(entry);
+                    dateTimePickerToRemove.Add(entry);
             }
-            foreach (DateTimePicker entry in entryToRemove)
-                _attachedList_KeyDown.Remove(entry);
+            foreach (DateTimePicker entry in dateTimePickerToRemove)
+                _attached_KeyDown.Remove(entry);
         }
 
         /// <summary>
@@ -100,9 +100,9 @@ namespace DG.UI.Helpers
         {
             if (dateTimePicker != null)
             {
-                if (!_attachedList_KeyDown.Contains(dateTimePicker))
+                if (!_attached_KeyDown.Contains(dateTimePicker))
                 {
-                    _attachedList_KeyDown.Add(dateTimePicker);
+                    _attached_KeyDown.Add(dateTimePicker);
                     dateTimePicker.KeyDown += (sender, e) => dateTimePicker_KeyDown(sender, e, firstDayOfWeek);
                 }
             }
