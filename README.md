@@ -8,7 +8,8 @@ It's adds some advanced functions to an existing ComboBox, TextBox and DateTimeP
 
 ## Download
 
-**[Latest Release](../../releases/latest)**
++ **[NuGet](https://www.nuget.org/packages/DG.EnhancedBoxHelpers)**
++ **[Latest Release](../../releases/latest)**
 
 
 ## Requirements
