@@ -12,7 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
-    <tags>TextBox, DataPicker, ComboBox, WinForm, Advanced, Enhanced</tags>
+    <tags>TextBox, DataPicker, ComboBox, WinForms, Advanced, Enhanced</tags>
     <dependencies>
       <dependency id="DG.AdvancedDataGridView" version="1.1.0.1" />
     </dependencies>

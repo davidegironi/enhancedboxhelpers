@@ -44,7 +44,29 @@ $builds = @(
 			}
 		);
 		#files to include in the release binary package
-		ReleaseBinIncludeFiles = @();
+		ReleaseBinIncludeFiles = @(
+			@{
+				Name = "EnhancedBoxHelpers";
+				Files = @(
+					@{
+						FileNameFrom = "..\License\";
+						FileNameTo = "..\"
+					},
+					@{
+						FileNameFrom = "..\License\LICENSE";
+						FileNameTo = "..\EnhancedBoxHelpers\LICENSE"
+					},
+					@{
+						FileNameFrom = "..\README.md";
+						FileNameTo = "..\EnhancedBoxHelpers\README.md"
+					},
+					@{
+						FileNameFrom = "..\README.md";
+						FileNameTo = "..\README.md"
+					}
+				)
+			}
+		);
 		#unit tests to run
 		Tests = @();
 		#commands to run before packaging of the release source
