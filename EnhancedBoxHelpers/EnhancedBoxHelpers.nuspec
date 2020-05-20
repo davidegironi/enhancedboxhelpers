@@ -6,9 +6,9 @@
     <title>Enhanced BoxHelpers</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://opensource.org/licenses/GPL-3.0</licenseUrl>
+    <license type="file">LICENSE</license>
     <projectUrl>https://github.com/davidegironi/enhancedboxhelpers</projectUrl>
-    <iconUrl>https://github.com/davidegironi/enhancedboxhelpers/raw/master/EnhancedBoxHelpers/Resources/Images/EnhancedBoxHelpers_logo.png</iconUrl>
+    <icon>logo.png</icon>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
@@ -18,6 +18,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\License\LICENSE" target="LICENSE" /> 
+    <file src="..\License\LICENSE" target="LICENSE" />
+    <file src="..\EnhancedBoxHelpers\Resources\Images\EnhancedBoxHelpers_logo.png" target="logo.png" />
   </files>
 </package>
