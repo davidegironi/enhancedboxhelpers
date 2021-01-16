@@ -35,7 +35,7 @@ $builds = @(
 	@{
 		#solutions filename (.sln)
 		Name = "EnhancedBoxHelpers";
-		#msbuild optionals contants
+		#msbuild optionals constants
 		Constants = "";
 		#projects to exclude from the release binary package
 		ReleaseBinExcludeProjects = @(
