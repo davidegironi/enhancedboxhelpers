@@ -10,7 +10,11 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+#if NETFRAMEWORK
 using System.Web.Script.Serialization;
+#else
+using System.Text.Json;
+#endif
 using System.Windows.Forms;
 
 namespace DG.UI.Helpers
@@ -332,10 +336,17 @@ namespace DG.UI.Helpers
             }
             else
             {
+#if NETFRAMEWORK
                 if (new JavaScriptSerializer().Serialize(_attached_BindingSource[comboBox].DataSource) != new JavaScriptSerializer().Serialize(items))
                 {
                     _attached_BindingSource[comboBox].DataSource = items;
                 }
+#else
+                if (JsonSerializer.Serialize(_attached_BindingSource[comboBox].DataSource) != JsonSerializer.Serialize(items))
+                {
+                    _attached_BindingSource[comboBox].DataSource = items;
+                }
+#endif
             }
 
             if (updateDataSource)

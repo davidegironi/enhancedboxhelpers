@@ -271,7 +271,11 @@ namespace DG.UI.Helpers
         {
             try
             {
+#if NETFRAMEWORK
+                _selectedId = (((DataRowView)_bindingSource.Current).Row)["_id"].ToString();
+#else
                 _selectedId = (((DataRowView)_bindingSource.Current).Row).Field<string>("_id");
+#endif
 
                 //try to set the parent caller
                 if (_combobox.ValueMember != null && !String.IsNullOrEmpty(_combobox.ValueMember))

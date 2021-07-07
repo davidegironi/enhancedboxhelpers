@@ -6,10 +6,9 @@ $solutionName = "EnhancedBoxHelpers"
 $versionMajor = "1"
 $versionMinor = "0"
 $versionBuild = GetVersionBuild
-$versionRevision = "17"
+$versionRevision = "18"
 #build version number
-$assemblyVersion = GetVersion $versionMajor $versionMinor $versionBuild $versionRevision
-$fileVersion = $assemblyVersion
+$version = GetVersion $versionMajor $versionMinor $versionBuild $versionRevision
 
 #base folder for of the solution
 $baseDir  = Resolve-Path .\..\
@@ -53,14 +52,6 @@ $builds = @(
 						FileNameTo = "..\"
 					},
 					@{
-						FileNameFrom = "..\License\LICENSE";
-						FileNameTo = "..\EnhancedBoxHelpers\LICENSE"
-					},
-					@{
-						FileNameFrom = "..\README.md";
-						FileNameTo = "..\EnhancedBoxHelpers\README.md"
-					},
-					@{
 						FileNameFrom = "..\README.md";
 						FileNameTo = "..\README.md"
 					}
@@ -72,10 +63,6 @@ $builds = @(
 		#commands to run before packaging of the release source
 		ReleaseSrcCmd = @();
 		#commands to run before packaging of the release source
-		ReleaseBinCmd = @(
-			@{
-				Cmd = ".\copylicense.bat"
-			}
-		);
+		ReleaseBinCmd = @();
 	};
 )

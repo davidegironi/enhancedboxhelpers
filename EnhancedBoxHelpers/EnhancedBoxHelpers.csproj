@@ -1,93 +1,50 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E02B3DF5-FB5D-464B-B182-9E8DD0BBBD74}</ProjectGuid>
+    <TargetFrameworks>net40;net5.0-windows</TargetFrameworks>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DG.UI.Helpers</RootNamespace>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyName>EnhancedBoxHelpers</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <Version>1.0.25907.18</Version>
+    <AssemblyVersion>1.0.25907.18</AssemblyVersion>
+    <FileVersion>1.0.25907.18</FileVersion>
+    <PackageVersion>1.0.25907.18</PackageVersion>
+    <Title>Enhanced Box Helpers</Title>
+    <Description>Enhanced BoxHelpers is an helper that adds advanced functions to .NET WinForms components like ComboBox, TextBox and DateTimePicker</Description>
+    <Product>Enhanced Box Helpers</Product>
+    <Authors>Davide Gironi</Authors>
+    <Company>DG</Company>
+    <RepositoryUrl>https://github.com/davidegironi/enhancedboxhelpers</RepositoryUrl>
+    <PackageId>DG.EnhancedBoxHelpers</PackageId>
+    <PackageTags>TextBox, DataPicker, ComboBox, WinForms, Advanced, Enhanced</PackageTags>
+    <PackageProjectUrl>https://github.com/davidegironi/enhancedboxhelpers</PackageProjectUrl>
+    <PackageLicenseExpression>
+    </PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>EnhancedBoxHelpers_logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>Copyright (c) Davide Gironi, 2015</Copyright>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedDataGridView, Version=1.1.24520.7, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DG.AdvancedDataGridView.1.1.24520.7\lib\net40\AdvancedDataGridView.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Extensions" Condition="'$(TargetFramework)' == 'net40'" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnhancedComboBoxHelper.cs" />
-    <Compile Include="EnhancedComboBoxHelperList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EnhancedComboBoxHelperList.Designer.cs">
-      <DependentUpon>EnhancedComboBoxHelperList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EnhancedDateTimePickerHelper.cs" />
-    <Compile Include="EnhancedDateTimePickerUtcHelper.cs" />
-    <Compile Include="EnhancedTextBoxHelper.cs" />
-    <Compile Include="EnhancedTextBoxHelperList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EnhancedTextBoxHelperList.Designer.cs">
-      <DependentUpon>EnhancedTextBoxHelperList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EnhancedComboBoxHelperList.resx">
-      <DependentUpon>EnhancedComboBoxHelperList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EnhancedTextBoxHelperList.resx">
-      <DependentUpon>EnhancedTextBoxHelperList.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="EnhancedBoxHelpers.nuspec">
-      <SubType>Designer</SubType>
+    <None Include="..\License\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+    <None Include="Resources\Images\EnhancedBoxHelpers_logo.png">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Resources\Images\EnhancedBoxHelpers_logo.png" />
+    <PackageReference Include="DG.AdvancedDataGridView" Version="1.2.25902.3" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

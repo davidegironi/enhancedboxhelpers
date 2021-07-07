@@ -282,7 +282,11 @@ namespace DG.UI.Helpers
         {
             try
             {
+#if NETFRAMEWORK
+                _selectedId = (((DataRowView)_bindingSource.Current).Row)["_value"].ToString();
+#else
                 _selectedId = (((DataRowView)_bindingSource.Current).Row).Field<string>("_value");
+#endif
                 _textBox.Text = _selectedId.ToString();
             }
             catch
