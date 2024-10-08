@@ -10,9 +10,9 @@
     <AssemblyName>EnhancedBoxHelpers.TestUI</AssemblyName>
     <Authors>Davide Gironi</Authors>
     <Company>DG</Company>
-    <Version>1.0.25907.18</Version>
-    <AssemblyVersion>1.0.25907.18</AssemblyVersion>
-    <FileVersion>1.0.25907.18</FileVersion>
+    <Version>1.0.29808.19</Version>
+    <AssemblyVersion>1.0.29808.19</AssemblyVersion>
+    <FileVersion>1.0.29808.19</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnhancedBoxHelpers\EnhancedBoxHelpers.csproj" />

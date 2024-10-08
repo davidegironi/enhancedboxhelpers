@@ -135,6 +135,13 @@ namespace DG.UI.Helpers
             foreach (DateTimePicker entry in dateTimePickerToRemove)
                 _attached_DateTimePicker.Remove(entry);
             dateTimePickerToRemove = new List<DateTimePicker>();
+            foreach (DateTimePicker entry in _attached_ValueChanged)
+            {
+                if (entry.IsDisposed)
+                    dateTimePickerToRemove.Add(entry);
+            }
+            foreach (DateTimePicker entry in dateTimePickerToRemove)
+                _attached_ValueChanged.Remove(entry);
             foreach (DateTimePicker entry in _attached_MouseHover)
             {
                 if (entry.IsDisposed)

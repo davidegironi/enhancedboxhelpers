@@ -195,8 +195,12 @@ namespace DG.UI.Helpers
                 List<Delegate> delegates = new List<Delegate>();
                 while (current != null)
                 {
-                    delegates.Add((Delegate)(current.GetType().GetField("handler", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current)));
-                    current = current.GetType().GetField("next", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current);
+                    if (current.GetType().GetField("handler", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField) != null)
+                        delegates.Add((Delegate)(current.GetType().GetField("handler", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current)));
+                    if (current.GetType().GetField("next", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField) != null)
+                        current = current.GetType().GetField("next", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField).GetValue(current);
+                    else
+                        break;
                 }
                 EventInfo[] eventinfol = typeof(TextBox).GetEvents();
                 foreach (Type eventinfotype in eventinfol.Select(r => r.EventHandlerType).Distinct())

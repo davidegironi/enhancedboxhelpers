@@ -8,10 +8,10 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyName>EnhancedBoxHelpers</AssemblyName>
-    <Version>1.0.25907.18</Version>
-    <AssemblyVersion>1.0.25907.18</AssemblyVersion>
-    <FileVersion>1.0.25907.18</FileVersion>
-    <PackageVersion>1.0.25907.18</PackageVersion>
+    <Version>1.0.29808.19</Version>
+    <AssemblyVersion>1.0.29808.19</AssemblyVersion>
+    <FileVersion>1.0.29808.19</FileVersion>
+    <PackageVersion>1.0.29808.19</PackageVersion>
     <Title>Enhanced Box Helpers</Title>
     <Description>Enhanced BoxHelpers is an helper that adds advanced functions to .NET WinForms components like ComboBox, TextBox and DateTimePicker</Description>
     <Product>Enhanced Box Helpers</Product>
