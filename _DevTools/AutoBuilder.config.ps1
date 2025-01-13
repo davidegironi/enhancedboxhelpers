@@ -6,7 +6,7 @@ $solutionName = "EnhancedBoxHelpers"
 $versionMajor = "1"
 $versionMinor = "0"
 $versionBuild = GetVersionBuild
-$versionRevision = "19"
+$versionRevision = "20"
 #build version number
 $version = GetVersion $versionMajor $versionMinor $versionBuild $versionRevision
 

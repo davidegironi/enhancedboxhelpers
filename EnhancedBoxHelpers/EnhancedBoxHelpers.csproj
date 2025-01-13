@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40;net5.0-windows</TargetFrameworks>
+    <TargetFrameworks>net40;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
     <OutputType>Library</OutputType>
     <RootNamespace>DG.UI.Helpers</RootNamespace>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -8,10 +8,10 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyName>EnhancedBoxHelpers</AssemblyName>
-    <Version>1.0.29808.19</Version>
-    <AssemblyVersion>1.0.29808.19</AssemblyVersion>
-    <FileVersion>1.0.29808.19</FileVersion>
-    <PackageVersion>1.0.29808.19</PackageVersion>
+    <Version>1.0.30113.20</Version>
+    <AssemblyVersion>1.0.30113.20</AssemblyVersion>
+    <FileVersion>1.0.30113.20</FileVersion>
+    <PackageVersion>1.0.30113.20</PackageVersion>
     <Title>Enhanced Box Helpers</Title>
     <Description>Enhanced BoxHelpers is an helper that adds advanced functions to .NET WinForms components like ComboBox, TextBox and DateTimePicker</Description>
     <Product>Enhanced Box Helpers</Product>
@@ -26,6 +26,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>EnhancedBoxHelpers_logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright (c) Davide Gironi, 2015</Copyright>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
@@ -34,6 +35,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\License\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+    <None Include="..\README.md" Link="README.md">
       <Pack>True</Pack>
       <PackagePath>
       </PackagePath>
