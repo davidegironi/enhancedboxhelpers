@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net40;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
     <OutputType>WinExe</OutputType>
     <RootNamespace>DG.UI.Helpers.Test</RootNamespace>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -10,9 +10,9 @@
     <AssemblyName>EnhancedBoxHelpers.TestUI</AssemblyName>
     <Authors>Davide Gironi</Authors>
     <Company>DG</Company>
-    <Version>1.0.30113.20</Version>
-    <AssemblyVersion>1.0.30113.20</AssemblyVersion>
-    <FileVersion>1.0.30113.20</FileVersion>
+    <Version>1.0.30115.21</Version>
+    <AssemblyVersion>1.0.30115.21</AssemblyVersion>
+    <FileVersion>1.0.30115.21</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnhancedBoxHelpers\EnhancedBoxHelpers.csproj" />

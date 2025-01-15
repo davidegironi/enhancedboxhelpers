@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net40;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net40;netcoreapp3.1;net5.0-windows;net6.0-windows;net7.0-windows;net8.0-windows</TargetFrameworks>
     <OutputType>Library</OutputType>
     <RootNamespace>DG.UI.Helpers</RootNamespace>
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
@@ -8,10 +8,10 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyName>EnhancedBoxHelpers</AssemblyName>
-    <Version>1.0.30113.20</Version>
-    <AssemblyVersion>1.0.30113.20</AssemblyVersion>
-    <FileVersion>1.0.30113.20</FileVersion>
-    <PackageVersion>1.0.30113.20</PackageVersion>
+    <Version>1.0.30115.21</Version>
+    <AssemblyVersion>1.0.30115.21</AssemblyVersion>
+    <FileVersion>1.0.30115.21</FileVersion>
+    <PackageVersion>1.0.30115.21</PackageVersion>
     <Title>Enhanced Box Helpers</Title>
     <Description>Enhanced BoxHelpers is an helper that adds advanced functions to .NET WinForms components like ComboBox, TextBox and DateTimePicker</Description>
     <Product>Enhanced Box Helpers</Product>
@@ -51,6 +51,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DG.AdvancedDataGridView" Version="1.2.25902.3" />
+    <PackageReference Include="DG.AdvancedDataGridView" Version="1.2.30115.18" />
   </ItemGroup>
 </Project>
