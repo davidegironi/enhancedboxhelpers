@@ -62,7 +62,7 @@ $builds = @(
 		Tests = @();
 		#commands to run before packaging of the release source
 		ReleaseSrcCmd = @();
-		#commands to run before packaging of the release source
+		#commands to run before packaging of the release binary
 		ReleaseBinCmd = @();
 	};
 )
