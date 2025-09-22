@@ -8,10 +8,10 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AssemblyName>EnhancedBoxHelpers</AssemblyName>
-    <Version>1.0.30115.21</Version>
-    <AssemblyVersion>1.0.30115.21</AssemblyVersion>
-    <FileVersion>1.0.30115.21</FileVersion>
-    <PackageVersion>1.0.30115.21</PackageVersion>
+    <Version>1.0.30922.22</Version>
+    <AssemblyVersion>1.0.30922.22</AssemblyVersion>
+    <FileVersion>1.0.30922.22</FileVersion>
+    <PackageVersion>1.0.30922.22</PackageVersion>
     <Title>Enhanced Box Helpers</Title>
     <Description>Enhanced BoxHelpers is an helper that adds advanced functions to .NET WinForms components like ComboBox, TextBox and DateTimePicker</Description>
     <Product>Enhanced Box Helpers</Product>
@@ -31,7 +31,7 @@
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net40" Version="1.0.3" PrivateAssets="All"/>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net40" Version="1.0.3" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Extensions" Condition="'$(TargetFramework)' == 'net40'" />

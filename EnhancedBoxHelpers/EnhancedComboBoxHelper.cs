@@ -344,16 +344,17 @@ namespace DG.UI.Helpers
             else
             {
 #if NETFRAMEWORK
-                if (new JavaScriptSerializer().Serialize(_attached_BindingSource[comboBox].DataSource) != new JavaScriptSerializer().Serialize(items))
-                {
-                    _attached_BindingSource[comboBox].DataSource = items;
-                }
+                bool dataChanged = new JavaScriptSerializer().Serialize(_attached_BindingSource[comboBox].DataSource) != new JavaScriptSerializer().Serialize(items);
 #else
-                if (JsonSerializer.Serialize(_attached_BindingSource[comboBox].DataSource) != JsonSerializer.Serialize(items))
-                {
-                    _attached_BindingSource[comboBox].DataSource = items;
-                }
+                bool dataChanged = JsonSerializer.Serialize(_attached_BindingSource[comboBox].DataSource) != JsonSerializer.Serialize(items);
 #endif
+                if (dataChanged)
+                {
+                    object currentDataSource = comboBox.DataSource;
+                    comboBox.DataSource = null;
+                    _attached_BindingSource[comboBox].DataSource = items;
+                    comboBox.DataSource = _attached_BindingSource[comboBox];
+                }
             }
 
             if (updateDataSource)
