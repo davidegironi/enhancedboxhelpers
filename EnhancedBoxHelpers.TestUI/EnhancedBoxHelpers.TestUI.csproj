@@ -10,9 +10,9 @@
     <AssemblyName>EnhancedBoxHelpers.TestUI</AssemblyName>
     <Authors>Davide Gironi</Authors>
     <Company>DG</Company>
-    <Version>1.0.30922.22</Version>
-    <AssemblyVersion>1.0.30922.22</AssemblyVersion>
-    <FileVersion>1.0.30922.22</FileVersion>
+    <Version>1.0.32011.23</Version>
+    <AssemblyVersion>1.0.32011.23</AssemblyVersion>
+    <FileVersion>1.0.32011.23</FileVersion>
   </PropertyGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'net40'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net40" Version="1.0.3" PrivateAssets="All" />

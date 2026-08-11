@@ -211,6 +211,8 @@ namespace DG.UI.Helpers
                             eventinfo.RemoveEventHandler(entry, d);
                     }
                 }
+                if (events != null)
+                    events.Dispose();
             }
             foreach (TextBox entry in textBoxToRemove)
                 _attached_TextBox.Remove(entry);

@@ -232,6 +232,8 @@ namespace DG.UI.Helpers
                             eventinfo.RemoveEventHandler(entry, d);
                     }
                 }
+                if (events != null)
+                    events.Dispose();
             }
             foreach (ComboBox entry in comboBoxToRemove)
                 entry.DataSource = null;
